@@ -1,6 +1,7 @@
 # fr
 A good alternative to find
 
+```sh
 Usage:
   fr [flags]
 
@@ -19,3 +20,4 @@ Flags:
   -r, --rush              fast but not sorted
   -T, --time string       modified time,accessed time and created time
   -t, --type string       specific file type, can be video, audio, img and so on
+```
