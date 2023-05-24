@@ -124,11 +124,13 @@ func _find(foo, root string, main bool, f func(foo, path string, info fs.FileInf
 		return nil
 	}
 	for _, entry := range dirEntry {
-		info, _ := entry.Info()
-		name := info.Name()
-		path := filepath.Join(root, name)
+		info, err := entry.Info()
+		if err!=nil{
+			continue
+		}
+		path := filepath.Join(root, info.Name())
 		//忽略隐藏文件，排除项目
-		if Cfg.JumpHiddenItem && strings.HasPrefix(name, ".") ||
+		if Cfg.JumpHiddenItem && strings.HasPrefix(info.Name(), ".") ||
 			Cfg.ExcludeDir != nil && !itemNotInList(path, Cfg.ExcludeDir) {
 			continue
 		}
